@@ -1,11 +1,11 @@
 class ExercisesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_exercise, except: [:index,:new,:edit,:create]
+  before_action :set_exercise, except: [:index,:new,:create]
   def index
 
   end
   def new
-    #@exercise= current_user.exercises.new
+    @exercise= current_user.exercises.new
   end
   def edit
   end

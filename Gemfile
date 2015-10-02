@@ -36,7 +36,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'annotate'
 group :development, :test do
   gem 'rspec-rails', '3.2.3'
   gem 'rspec-support', '~> 3.2.0'
