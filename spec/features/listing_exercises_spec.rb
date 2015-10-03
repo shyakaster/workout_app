@@ -4,8 +4,8 @@ RSpec.feature "Listing exercises" do
   before do
     @john=User.create(email:"shyakaster@gmail.com",password:"password")
     login_as @john
-    @e1=@john.exercises.create(duration_in_min:20, workout:"Body building",workout_date:"2015-2-4")
-    @e2=@john.exercises.create(duration_in_min:14, workout:"Body building and boxing",workout_date:"2015-12-14")
+    @e1=@john.exercises.create(duration_in_min:20, workout:"Body building",workout_date:Date.today)
+    @e2=@john.exercises.create(duration_in_min:14, workout:"Body building and boxing",workout_date:Date.today)
   end
   scenario "shows users workout for the last seven days" do
     visit '/'
