@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   has_many :friends, through: :friendships, class_name: "User"
 
-  self.per_page = 6
+  self.per_page = 2
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -49,5 +49,8 @@ class User < ActiveRecord::Base
   end
   def follows_or_same?(new_friend)
     friendships.map(&:friend).include?(new_friend) || self == new_friend
+  end
+  def current_friendship(friend)
+    friendships.where(friend: friend).first
   end
 end
