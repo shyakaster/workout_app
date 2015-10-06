@@ -27,6 +27,11 @@ class User < ActiveRecord::Base
   has_many :exercises
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  has_many :friendships
+
+  has_many :friends, through: :friendships, class_name: "User"
+
   self.per_page = 6
   def full_name
     "#{first_name} #{last_name}"
@@ -41,5 +46,8 @@ class User < ActiveRecord::Base
             "%#{names_array[0]}%", "%#{names_array[1]}%", "%#{names_array[0]}%",
             "%#{names_array[1]}%").order(:first_name)
     end
+  end
+  def follows_or_same?(new_friend)
+    friendships.map(&:friend).include?(new_friend) || self == new_friend
   end
 end
